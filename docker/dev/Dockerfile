@@ -1,5 +1,5 @@
-FROM jmenga/todobackend-base:latest
-MAINTAINER Justin Menga <justin.menga@gmail.com>
+FROM terrymoon999/todobackend-base:latest
+MAINTAINER Alex I <blablabla@example.com>
 
 # Install dev/build dependencies
 RUN apt-get update && \

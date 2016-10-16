@@ -1,6 +1,6 @@
 # Project variables
 PROJECT_NAME ?= todobackend
-ORG_NAME ?= jmenga
+ORG_NAME ?= terrymoon999
 REPO_NAME ?= todobackend
 
 # Filenames
@@ -95,7 +95,7 @@ clean:
 
 tag: 
 	${INFO} "Tagging release image with tags $(TAG_ARGS)..."
-	@ $(foreach tag,$(TAG_ARGS), docker tag -f $(IMAGE_ID) $(DOCKER_REGISTRY)/$(ORG_NAME)/$(REPO_NAME):$(tag);)
+	@ $(foreach tag,$(TAG_ARGS), docker tag  $(IMAGE_ID) $(DOCKER_REGISTRY)/$(ORG_NAME)/$(REPO_NAME):$(tag);)
 	${INFO} "Tagging complete"
 
 buildtag:
@@ -105,7 +105,7 @@ buildtag:
 
 login:
 	${INFO} "Logging in to Docker registry $$DOCKER_REGISTRY..."
-	@ docker login -u $$DOCKER_USER -p $$DOCKER_PASSWORD -e $$DOCKER_EMAIL $(DOCKER_REGISTRY_AUTH)
+	@ docker login -u $$DOCKER_USER -p $$DOCKER_PASSWORD $(DOCKER_REGISTRY_AUTH)
 	${INFO} "Logged in to Docker registry $$DOCKER_REGISTRY"
 
 logout:
@@ -115,7 +115,7 @@ logout:
 
 publish:
 	${INFO} "Publishing release image $(IMAGE_ID) to $(DOCKER_REGISTRY)/$(ORG_NAME)/$(REPO_NAME)..."
-	@ $(foreach tag,$(shell echo $(REPO_EXPR)), docker push $(tag);)
+	@ $(foreach tag,$(shell echo $(REPO_EXPR)), echo $(tag); docker push $(tag);)
 	${INFO} "Publish complete"
 	
 # Cosmetics
